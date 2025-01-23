@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
         <nav>
           <Navbar></Navbar>
         </nav>
-        <main>{children}</main>
+        <main className="container w-11/12 mx-auto">{children}</main>
       </body>
     </html>
   );
