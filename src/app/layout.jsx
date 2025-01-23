@@ -5,7 +5,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="font-roboto">
-        <nav>
+        <nav className="shadow-sm">
           <Navbar></Navbar>
         </nav>
         <main className="container w-11/12 mx-auto">{children}</main>
