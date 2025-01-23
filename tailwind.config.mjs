@@ -9,7 +9,10 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        default: "#748D92",
+        second: "#B38D51",
+      },
       fontFamily: {
         roboto: ["Roboto", "serif"],
       },
