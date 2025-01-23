@@ -10,6 +10,9 @@ export default {
   theme: {
     extend: {
       colors: {},
+      fontFamily: {
+        roboto: ["Roboto", "serif"],
+      },
     },
   },
   plugins: [daisyui],
