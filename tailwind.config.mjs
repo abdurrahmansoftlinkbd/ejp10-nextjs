@@ -15,6 +15,7 @@ export default {
       },
       fontFamily: {
         roboto: ["Roboto", "serif"],
+        lustria: ["Lustria", "serif"],
       },
     },
   },
