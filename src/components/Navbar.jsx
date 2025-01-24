@@ -40,7 +40,7 @@ const Navbar = async () => {
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="profile">Profile</Link>
+              <Link href="/profile">Profile</Link>
             </li>
           </ul>
         </div>
@@ -59,7 +59,7 @@ const Navbar = async () => {
             </Link>
           </li>
           <li>
-            <Link className="font-bold text-second" href="profile">
+            <Link className="font-bold text-second" href="/profile">
               Profile
             </Link>
           </li>
