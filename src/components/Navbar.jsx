@@ -7,14 +7,6 @@ import {
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 const Navbar = async () => {
-  const links = (
-    <>
-      <li>
-        <Link href="/">Home</Link>
-      </li>
-    </>
-  );
-
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
@@ -44,7 +36,12 @@ const Navbar = async () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            {links}
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="profile">Profile</Link>
+            </li>
           </ul>
         </div>
         <Link
@@ -55,7 +52,18 @@ const Navbar = async () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal  gap-3 px-1">
+          <li>
+            <Link className="font-bold text-second" href="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className="font-bold text-second" href="profile">
+              Profile
+            </Link>
+          </li>
+        </ul>
       </div>
       <div className="navbar-end gap-3">
         {user ? (
