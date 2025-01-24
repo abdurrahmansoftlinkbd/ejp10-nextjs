@@ -2,6 +2,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import Loading from "./Loading";
 
 // Fetch function for blog posts
 const fetchPosts = async () => {
@@ -17,7 +18,7 @@ const Posts = () => {
     queryFn: fetchPosts,
   });
 
-  if (isLoading) return <div className="text-center">Loading...</div>;
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
