@@ -1,7 +1,12 @@
 import Link from "next/link";
 import React from "react";
-
-const Navbar = () => {
+import {
+  RegisterLink,
+  LoginLink,
+  LogoutLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+const Navbar = async () => {
   const links = (
     <>
       <li>
@@ -9,6 +14,11 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  console.log(user);
 
   return (
     <div className="navbar container w-11/12 mx-auto">
@@ -48,8 +58,14 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-3">
-        <a className="btn">Login</a>
-        <a className="btn">Register</a>
+        {user ? (
+          <LogoutLink className="btn">Log out</LogoutLink>
+        ) : (
+          <>
+            <LoginLink className="btn">Login</LoginLink>
+            <RegisterLink className="btn">Register</RegisterLink>
+          </>
+        )}
       </div>
     </div>
   );

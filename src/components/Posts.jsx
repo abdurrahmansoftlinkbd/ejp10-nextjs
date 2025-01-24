@@ -3,7 +3,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loading from "./Loading";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const fetchPosts = async () => {
   const { data } = await axios.get(
@@ -13,15 +13,10 @@ const fetchPosts = async () => {
 };
 
 const Posts = () => {
-  const router = useRouter();
   const { data: posts, isLoading } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
   });
-
-  const handleReadMore = (postId) => {
-    router.push(`/posts/${postId}`);
-  };
 
   if (isLoading) return <Loading></Loading>;
 
@@ -39,12 +34,12 @@ const Posts = () => {
               </h2>
               <p>{post.body.slice(0, 100)}...</p>
               <div className="card-actions">
-                <button
+                <Link
+                  href={`/posts/${post.id}`}
                   className="btn btn-sm bg-second border-second text-white hover:bg-default hover:border-default"
-                  onClick={() => handleReadMore(post.id)}
                 >
                   Read More
-                </button>
+                </Link>
               </div>
             </div>
           </div>
