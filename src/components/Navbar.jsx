@@ -10,8 +10,6 @@ const Navbar = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  console.log(user);
-
   return (
     <div className="navbar container w-11/12 mx-auto">
       <div className="navbar-start">
