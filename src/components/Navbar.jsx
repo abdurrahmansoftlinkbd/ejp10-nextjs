@@ -2,6 +2,14 @@ import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
+  const links = (
+    <>
+      <li>
+        <a>Item 1</a>
+      </li>
+    </>
+  );
+
   return (
     <div className="navbar container w-11/12 mx-auto">
       <div className="navbar-start">
@@ -26,57 +34,22 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {links}
           </ul>
         </div>
         <Link
           href="/"
-          className="text-3xl font-bold text-default hover:text-second transition-colors duration-200 ease-in-out"
+          className="text-3xl font-bold font-lustria text-default hover:text-second transition-colors duration-200 ease-in-out"
         >
           Letsblog
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className="navbar-end gap-3">
+        <a className="btn">Login</a>
+        <a className="btn">Register</a>
       </div>
     </div>
   );
