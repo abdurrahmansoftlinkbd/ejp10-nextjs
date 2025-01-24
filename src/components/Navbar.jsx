@@ -59,6 +59,34 @@ const Navbar = async () => {
       </div>
       <div className="navbar-end gap-3">
         {user ? (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-14 rounded-full">
+                <img
+                  referrerPolicy="no-referrer"
+                  title={user?.given_name}
+                  src={user?.picture}
+                  className="w-full"
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow text-zinc-950"
+            >
+              <li>
+                <a className="justify-between">{user?.given_name}</a>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
+        {user ? (
           <LogoutLink className="btn">Log out</LogoutLink>
         ) : (
           <>
