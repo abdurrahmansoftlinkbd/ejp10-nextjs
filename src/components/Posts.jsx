@@ -3,8 +3,8 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loading from "./Loading";
+import { useRouter } from "next/navigation";
 
-// Fetch function for blog posts
 const fetchPosts = async () => {
   const { data } = await axios.get(
     "https://jsonplaceholder.typicode.com/posts"
@@ -13,10 +13,15 @@ const fetchPosts = async () => {
 };
 
 const Posts = () => {
+  const router = useRouter();
   const { data: posts, isLoading } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
   });
+
+  const handleReadMore = (postId) => {
+    router.push(`/posts/${postId}`);
+  };
 
   if (isLoading) return <Loading></Loading>;
 
@@ -34,7 +39,10 @@ const Posts = () => {
               </h2>
               <p>{post.body.slice(0, 100)}...</p>
               <div className="card-actions">
-                <button className="btn btn-sm bg-second border-second text-white hover:bg-default hover:border-default">
+                <button
+                  className="btn btn-sm bg-second border-second text-white hover:bg-default hover:border-default"
+                  onClick={() => handleReadMore(post.id)}
+                >
                   Read More
                 </button>
               </div>
